@@ -1,0 +1,240 @@
+@keyframes suntrack {	
+  from { transform: rotate(.15turn); }
+  to { transform: rotate(-.13turn); }
+}
+
+@keyframes sunpulse { 
+  from { box-shadow: 0 0 100px #ff0, 0 0 100px #ff0; }
+  to { box-shadow: 0 0 50px #ff0, 0 0 75px #ff0;  }
+}
+
+html, body {
+	overflow: hidden;
+}
+body { 
+  margin: 0; 
+  position: relative;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100vh;
+	z-index: 999;
+	color: #FFF;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+}
+.inner h1 {
+	font-size: 50px;
+}
+.inner ul {
+	padding: 0;
+}
+.inner ul li {
+	border: 2px solid #FFF;
+    padding: 10px;
+    color: #FFF;
+    margin: 25px;
+    list-style-type: none;
+    display: inline-block;
+    width: 150px;
+}
+.timejs-wrap {
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	float: left;
+}
+.timejs-set {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.timejs-set.active {
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	opacity: 100;
+	display: block;
+}
+
+/* MORNING WRAP */
+.morning-wrap .row, .afternoon-wrap .row, .evening-wrap .row {
+	height: 100vh;
+}
+.sun {
+  width: 15vw;
+  height: 15vw;
+  background: #ff0;
+  background: radial-gradient(ellipse at center, #f90 0%,#fc0 60%,#ff0 100%);
+  border-radius: 100%;
+  position: absolute;
+  bottom: 0vw;
+  right: 7vw;
+  transform-origin: -35vw 5vw;
+  animation: suntrack 5s forwards linear, sunpulse 2s alternate infinite; 
+}
+
+.morning-wrap {
+	background: -webkit-linear-gradient(top, #56498A 0%, #D69F9F 100%);
+	background: -linear-gradient(top, #56498A 0%, #D69F9F 100%);
+	background: -moz-linear-gradient(top, #56498A 0%, #D69F9F 100%);
+}
+
+/* AFTERNOON WRAP */
+.afternoon-wrap .afternoon-sun {
+  width: 15vw;
+  height: 15vw;
+  background: #ff0;
+  background: radial-gradient(ellipse at center, #f90 0%,#fc0 60%,#ff0 100%);
+  border-radius: 100%;
+  position: absolute;
+  bottom: 0vw;
+  right: 7vw;
+  transform-origin: -35vw 5vw;
+  transform: rotate(-.13turn);
+}
+/* Clouds */
+#clouds {
+	height: 100%;
+	padding: 150px 0;
+	background: #c9dbe9;
+	background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
+	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+}
+
+/*Time to finalise the cloud shape*/
+.cloud {
+	width: 200px; height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	
+	position: relative; 
+}
+
+.cloud:before, .cloud:after {
+	content: '';
+	position: absolute; 
+	background: #fff;
+	width: 100px; height: 80px;
+	position: absolute; top: -15px; left: 10px;
+	
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+	width: 120px; height: 120px;
+	top: -55px; left: auto; right: 15px;
+}
+
+/*Time to animate*/
+.x1 {
+	-webkit-animation: moveclouds 35s linear infinite;
+	-moz-animation: moveclouds 35s linear infinite;
+	-o-animation: moveclouds 35s linear infinite;
+}
+
+/*variable speed, opacity, and position of clouds for realistic effect*/
+.x2 {
+	left: 200px;
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 0.6; /*opacity proportional to the size*/
+	/*Speed will also be proportional to the size and opacity*/
+	/*More the speed. Less the time in 's' = seconds*/
+	-webkit-animation: moveclouds 55s linear infinite;
+	-moz-animation: moveclouds 55s linear infinite;
+	-o-animation: moveclouds 55s linear infinite;
+}
+
+.x3 {
+	left: -250px; top: -200px;
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+	-webkit-animation: moveclouds 40s linear infinite;
+	-moz-animation: moveclouds 40s linear infinite;
+	-o-animation: moveclouds 40s linear infinite;
+}
+
+.x4 {
+	left: 470px; top: -250px;
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	transform: scale(0.75);
+	opacity: 0.75; /*opacity proportional to the size*/
+	-webkit-animation: moveclouds 38s linear infinite;
+	-moz-animation: moveclouds 38s linear infinite;
+	-o-animation: moveclouds 38s linear infinite;
+}
+
+.x5 {
+	left: -150px; top: -150px;
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+	-webkit-animation: moveclouds 60s linear infinite;
+	-moz-animation: moveclouds 60s linear infinite;
+	-o-animation: moveclouds 60s linear infinite;
+}
+
+@-webkit-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+
+/* EVENING WRAP */
+.evening-wrap {
+	background-image: url('img/night-bg.jpg'); 
+	background-size:cover;
+}
+.moon { 
+  background-image: url('img/moon.png');
+  width: 15vw;
+  height: 15vw;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% 90%;
+  border-radius: 100%;
+  bottom: 0vw;
+  right: 7vw;
+  transform-origin: -35vw 5vw;
+  opacity: .8;
+  transform: rotate(-.13turn);
+}
